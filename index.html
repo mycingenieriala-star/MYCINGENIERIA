@@ -3,90 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servicios de Ingeniería Avanzada, Confiabilidad y Escaneo 3D</title>
+    <title>Ingeniería Avanzada, Escaneo LiDAR y Confiabilidad Operacional</title>
     <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 20px; background-color: #f4f4f9; }
-        header { background: #002b49; color: #fff; padding: 30px 20px; text-align: center; border-radius: 8px 8px 0 0; }
-        section { background: #fff; margin: 20px auto; padding: 25px; border-radius: 8px; max-width: 1000px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        h2 { color: #002b49; border-bottom: 2px solid #002b49; padding-bottom: 5px; }
-        .grid-proyectos, .grid-alianzas { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 15px; }
-        .proyecto-card, .alianza-card { border: 1px solid #ddd; border-radius: 6px; padding: 15px; background: #fafafa; }
-        .proyecto-card img, .banner-img { width: 100%; height: 200px; object-fit: cover; border-radius: 4px; background: #eee; margin-bottom: 10px; }
-        .badge { display: inline-block; background: #004d80; color: #fff; padding: 4px 8px; font-size: 0.85rem; border-radius: 4px; margin-bottom: 10px; }
+        :root {
+            --primary: #0a192f;
+            --accent: #00b4d8;
+            --text-main: #334155;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+        body { background-color: var(--bg-light); color: var(--text-main); line-height: 1.6; }
+
+        /* Header / Hero Section */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, #1e293b 100%);
+            color: var(--white);
+            padding: 80px 20px;
+            text-align: center;
+        }
+        header h1 { font-size: 2.5rem; margin-bottom: 15px; font-weight: 700; letter-spacing: -0.5px; }
+        header p { font-size: 1.2rem; color: #94a3b8; max-width: 700px; margin: 0 auto; }
+
+        /* Main Container */
+        .container { max-width: 1100px; margin: -40px auto 40px; padding: 0 20px; position: relative; }
+
+        /* Sections */
+        section {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+        }
+        
+        h2 { font-size: 1.8rem; color: var(--primary); margin-bottom: 20px; position: relative; padding-bottom: 10px; }
+        h2::after { content: ''; position: absolute; left: 0; bottom: 0; width: 50px; height: 3px; background: var(--accent); border-radius: 2px; }
+
+        /* Grids */
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 20px; }
+        
+        /* Cards */
+        .card {
+            background: var(--bg-light);
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 12px 20px -10px rgba(0,0,0,0.1); }
+        .card h3 { color: var(--primary); margin-bottom: 10px; font-size: 1.25rem; }
+        .card p { font-size: 0.95rem; color: #64748b; margin-bottom: 15px; }
+
+        /* Badges & Links */
+        .btn-link {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--white);
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .btn-link:hover { background: var(--accent); }
+
+        /* Features List with Images */
+        .feature-flex { display: flex; flex-direction: column; gap: 30px; margin-top: 20px; }
+        .feature-row { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center; }
+        .feature-row.reverse { direction: rtl; }
+        .feature-row.reverse > * { direction: ltr; }
+        .feature-text ul { list-style: none; margin-top: 15px; }
+        .feature-text li { margin-bottom: 10px; position: relative; padding-left: 20px; }
+        .feature-text li::before { content: '▪'; position: absolute; left: 0; color: var(--accent); }
+        
+        .img-placeholder {
+            width: 100%;
+            height: 240px;
+            background: #e2e8f0;
+            border-radius: 8px;
+            object-fit: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .feature-row, .feature-row.reverse { grid-template-columns: 1fr; direction: ltr; }
+            header h1 { font-size: 2rem; }
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Ingeniería, Escaneo Láser LiDAR y Confiabilidad Operacional</h1>
-        <p>Soluciones de alta precisión y gestión integral de activos industriales</p>
+        <h1>Ingeniería, Escaneo Láser LiDAR y Confiabilidad</h1>
+        <p>Soluciones técnicas de alta precisión, ingeniería de detalle y gestión avanzada de activos industriales.</p>
     </header>
 
-    <!-- Sección de Alianzas Estratégicas -->
-    <section>
-        <h2>Alianzas Estratégicas</h2>
-        <p>Potenciamos nuestras capacidades técnicas y alcance global mediante alianzas clave con referentes internacionales:</p>
-        <div class="grid-alianzas">
-            <div class="alianza-card">
-                <h3>GEASA Brasil</h3>
-                <p>Alianza colaborativa enfocada en el desarrollo de soluciones de ingeniería, maquinaria y optimización de procesos industriales complejos <a href="https://www.geasa.com.br/" target="_blank"></a>.</p>
-                <a href="https://www.geasa.com.br/" target="_blank" class="badge">Visitar Geasa Brasil</a>
-            </div>
-            <div class="alianza-card">
-                <h3>Fiabilidad 365</h3>
-                <p>Sinergia con metodologías de vanguardia para la gestión de activos, mantenimiento industrial avanzado y mejora continua de la confiabilidad operacional <a href="https://www.fiabilidad365.com/tag/confiabilidad/" target="_blank"></a>.</p>
-                <a href="https://www.fiabilidad365.com/tag/confiabilidad/" target="_blank" class="badge">Visitar Fiabilidad 365</a>
-            </div>
-        </div>
-    </section>
+    <div class="container">
 
-    <!-- Sección de Soluciones de Ingeniería y Tecnología en Acción -->
-    <section>
-        <h2>Capacidades Técnicas y Tecnológicas</h2>
-        
-        <!-- Imagen temática: Revisión de planos en ingeniería -->
-        <img src="ruta-ingenieros-revisando-planos.jpg" alt="Ingenieros analizando planos y cálculos estructurales" class="banner-img">
-        
-        <ul>
-            <li><strong>Ingeniería Conceptual, Básica y de Detalle:</strong> Desarrollo integral de proyectos de ingeniería desde la prefactibilidad hasta la documentación constructiva y memorias de cálculo.</li>
-            <li><strong>Cálculo y Análisis Estructural / Mecánico:</strong> Modelación avanzada por elementos finitos (FEM) y verificación bajo normativas internacionales (AISC, CMAA).</li>
-        </ul>
-
-        <!-- Imagen temática: Escaneo con láser LiDAR -->
-        <img src="ruta-escaneo-laser-lidar.jpg" alt="Técnico realizando levantamiento As-Built con escáner láser LiDAR Leica" class="banner-img" style="margin-top: 20px;">
-        
-        <ul>
-            <li><strong>Escaneo Láser 3D con Tecnología LiDAR (Leica):</strong> Levantamientos dimensionales de alta precisión, captura de nubes de puntos y modelado As-Built para entornos industriales complejos.</li>
-            <li><strong>Comisionamiento y Puesta en Marcha:</strong> Validación técnica, protocolos de prueba y aseguramiento de operatividad en plantas.</li>
-            <li><strong>Ingeniería de Confiabilidad:</strong> Análisis de criticidad, optimización de planes de mantenimiento y disponibilidad de activos industriales.</li>
-        </ul>
-    </section>
-
-    <!-- Sección de Proyectos Ejecutados de Ingeniería -->
-    <section>
-        <h2>Proyectos Ejecutados de Ingeniería</h2>
-        <p>Conozca una selección de nuestros principales hitos y desarrollos de ingeniería aplicados en la industria:</p>
-        
-        <div class="grid-proyectos">
-            <!-- Proyecto 1 -->
-            <div class="proyecto-card">
-                <img src="ruta-proyecto-escaneo-planta.jpg" alt="Levantamiento As-Built con Láser Leica">
-                <span class="badge">Escaneo LiDAR & Ingeniería 3D</span>
-                <h3>Levantamiento y Modelado As-Built</h3>
-                <p><strong>Descripción:</strong> Escaneo láser de alta precisión con tecnología Leica para la integración de nueva línea de procesos sin interferencias.</p>
-                <p><strong>Alcance:</strong> Captura de nubes de puntos, ingeniería de detalle y modelado tridimensional.</p>
+        <!-- Alianzas Estratégicas -->
+        <section>
+            <h2>Alianzas Estratégicas</h2>
+            <p>Potenciamos nuestra capacidad de entrega global mediante alianzas consolidadas con referentes de la industria:</p>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>GEASA Brasil</h3>
+                    <p>Desarrollo conjunto de soluciones de ingeniería integral, optimización de maquinaria y proyectos industriales complejos.</p>
+                    <a href="https://www.geasa.com.br/" target="_blank" class="btn-link">Visitar Geasa Brasil</a>
+                </div>
+                <div class="card">
+                    <h3>Fiabilidad 365</h3>
+                    <p>Implementación de metodologías de vanguardia en gestión de activos, mantenimiento centrado en confiabilidad y disponibilidad operacional.</p>
+                    <a href="https://www.fiabilidad365.com/tag/confiabilidad/" target="_blank" class="btn-link">Visitar Fiabilidad 365</a>
+                </div>
             </div>
+        </section>
 
-            <!-- Proyecto 2 -->
-            <div class="proyecto-card">
-                <img src="ruta-proyecto-calculo-estructural.jpg" alt="Simulación y Cálculo Estructural FEM">
-                <span class="badge">Cálculo & Confiabilidad</span>
-                <h3>Optimización Estructural y Confiabilidad</h3>
-                <p><strong>Descripción:</strong> Evaluación mediante análisis de elementos finitos (FEM) y rediseño de componentes sometidos a cargas severas.</p>
-                <p><strong>Alcance:</strong> Ingeniería básica, memorias de cálculo y plan de confiabilidad.</p>
+        <!-- Capacidades Técnicas (Planos & Escaneo LiDAR) -->
+        <section>
+            <h2>Capacidades Técnicas y Tecnológicas</h2>
+            
+            <div class="feature-flex">
+                <!-- Fila 1: Ingeniería y Planos -->
+                <div class="feature-row">
+                    <div class="feature-text">
+                        <h3>Ingeniería Conceptual, Básica y de Detalle</h3>
+                        <p>Desarrollo riguroso de proyectos de ingeniería con fuerte base analítica y normativa:</p>
+                        <ul>
+                            <li>Cálculos y análisis estructural/mecánico avanzado (FEM).</li>
+                            <li>Revisión de planos, memorias de cálculo y modelación bajo normativas internacionales.</li>
+                            <li>Comisionamiento y aseguramiento de puesta en marcha.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <!-- Reemplazar src con la ruta real de tu imagen de ingenieros revisando planos -->
+                        <img src="ruta-ingenieros-planos.jpg" alt="Ingenieros revisando planos técnicos" class="img-placeholder" onerror="this.style.background='#cbd5e1';this.value='Imagen: Revisión de Planos';">
+                    </div>
+                </div>
+
+                <!-- Fila 2: Escaneo Láser LiDAR -->
+                <div class="feature-row reverse">
+                    <div class="feature-text">
+                        <h3>Escaneo Láser 3D con Tecnología LiDAR (Leica)</h3>
+                        <p>Captura masiva de datos espaciales para entornos industriales complejos de alta exigencia:</p>
+                        <ul>
+                            <li>Levantamientos dimensionales As-Built de máxima precisión.</li>
+                            <li>Generación de nubes de puntos y modelado tridimensional integrado.</li>
+                            <li>Mitigación de interferencias en proyectos de ampliación y retrofit.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <!-- Reemplazar src con la ruta real de tu imagen de escaneo LiDAR -->
+                        <img src="ruta-escaneo-lidar.jpg" alt="Levantamiento con escáner láser LiDAR" class="img-placeholder" onerror="this.style.background='#cbd5e1';this.value='Imagen: Escaneo Láser LiDAR';">
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- Proyectos Ejecutados de Ingeniería -->
+        <section>
+            <h2>Proyectos Ejecutados de Ingeniería</h2>
+            <p>Hitos destacados en el desarrollo de soluciones de ingeniería y optimización de activos:</p>
+            <div class="grid-2">
+                <div class="card">
+                    <!-- Reemplazar src con la foto real del proyecto -->
+                    <img src="ruta-proyecto-1.jpg" alt="Proyecto Escaneo As-Built" class="img-placeholder" style="height: 180px; margin-bottom: 15px;">
+                    <h3>Levantamiento As-Built Planta Industrial</h3>
+                    <p><strong>Alcance:</strong> Escaneo láser 3D con tecnología Leica, procesamiento de nubes de puntos e ingeniería de detalle para integración de nueva línea.</p>
+                </div>
+                <div class="card">
+                    <!-- Reemplazar src con la foto real del proyecto -->
+                    <img src="ruta-proyecto-2.jpg" alt="Proyecto Confiabilidad y Cálculo" class="img-placeholder" style="height: 180px; margin-bottom: 15px;">
+                    <h3>Optimización Estructural y Confiabilidad</h3>
+                    <p><strong>Alcance:</strong> Modelación por elementos finitos, análisis de criticidad bajo estándares de confiabilidad y rediseño mecánico.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
 
 </body>
 </html>
